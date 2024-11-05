@@ -17,7 +17,7 @@ const Instructor = () => {
               teach what you love.
             </p>
 
-            <Button className="bg-white hover:bg-lwb_black text-lwb_orange hover:text-white flex items-center justify-between h-[48px] w-full lg:w-[196px] group">
+            <Button className="bg-white px-4 hover:bg-lwb_black text-lwb_orange hover:text-white flex items-center justify-between h-[48px] w-full lg:w-[196px] group">
               <span>Get Started</span>
               <ArrowRight className="group-hover:animate-pulse" />
             </Button>

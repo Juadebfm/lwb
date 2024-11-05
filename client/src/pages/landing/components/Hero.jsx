@@ -15,13 +15,14 @@ const Hero = () => {
           your skills today!
         </p>
         <Button
-          className="bg-lwb_orange hover:bg-lwb_black text-white hover:text-white flex items-center justify-between h-[48px] group  w-full lg:w-[196px]"
+          className="bg-lwb_orange px-4 hover:bg-lwb_black text-white hover:text-white flex items-center justify-between h-[48px] group  w-full lg:w-[196px]"
           onClick={(e) => {
             e.preventDefault();
             console.log("Clicked");
           }}
         >
-          <span>Get Started</span> <ArrowRight className="group-hover:animate-pulse" />
+          <span>Get Started</span>{" "}
+          <ArrowRight className="group-hover:animate-pulse" />
         </Button>
       </div>
       <div className="relative">
