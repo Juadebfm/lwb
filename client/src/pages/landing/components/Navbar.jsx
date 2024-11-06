@@ -81,7 +81,7 @@ const Navbar = () => {
         </ul>
         <div className="text-sm text-slate-400">{formattedDate}</div>
       </div>
-      <nav className="bg-white px-8 md:px-20 lg:px-28 py-4 md:py-8 lg:py-4 flex items-center justify-between border-y border-y-[#E9EAF0]">
+      <nav className="bg-white px-8 md:px-20 lg:px-28 py-4 md:py-8 lg:py-6 flex items-center justify-between border-y border-y-[#E9EAF0]">
         <Link to="/">
           <img
             src="/smalllogo.png"
