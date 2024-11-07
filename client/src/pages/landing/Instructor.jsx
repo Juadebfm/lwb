@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Link } from "react-router-dom";
 import Hero from "./components/Hero";
+import BecomeInstructor from "./components/BecomeInstructor";
 
 const Instructor = () => {
   return (
@@ -40,6 +41,7 @@ const Instructor = () => {
             contentWidth="80%"
           />
         </div>
+        <BecomeInstructor />
       </main>
       <Footer />
     </div>
