@@ -113,3 +113,72 @@ exports.getMe = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+exports.updateProfile = async (req, res) => {
+  try {
+    const { userId } = req.user;
+    const {
+      name,
+      age,
+      education,
+      interests,
+      work,
+      state,
+      country,
+      qualifications,
+      profilePicture,
+    } = req.body;
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+
+    // Update the user's profile
+    user.name = name;
+    user.age = age;
+    user.education = education;
+    user.interests = interests;
+    user.work = work;
+    user.state = state;
+    user.country = country;
+    user.qualifications = qualifications;
+    user.profilePicture = profilePicture; // Update the profile picture URL
+
+    // Save the updated user
+    await user.save();
+
+    // Return the updated user's profile
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.updateRole = async (req, res) => {
+  try {
+    const { userId, role: userRole } = req.user;
+    const { role, expertiseAreas } = req.body;
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+
+    // Only admins can update the role of other users
+    if (userRole === "admin") {
+      user.role = role;
+      user.expertiseAreas = expertiseAreas;
+    } else if (user.role === "instructor") {
+      user.expertiseAreas = expertiseAreas; // Instructors can only update their own expertise areas
+    } else {
+      return res.status(403).json({ message: "Forbidden" });
+    }
+
+    // Save the updated user
+    await user.save();
+
+    // Return the updated user's profile
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};

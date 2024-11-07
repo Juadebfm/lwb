@@ -4,6 +4,7 @@ const router = express.Router();
 const passport = require("passport");
 const { check } = require("express-validator");
 const authController = require("../controllers/authController");
+const authMiddleware = require("../middleware/auth");
 
 // Validation middleware
 const registerValidation = [
@@ -23,6 +24,8 @@ const loginValidation = [
 // Routes
 router.post("/register", registerValidation, authController.register);
 router.post("/login", loginValidation, authController.login);
+router.put("/profile", authMiddleware, authController.updateProfile);
+router.put("/role", authMiddleware, authController.updateRole);
 
 // Google OAuth routes
 router.get(
