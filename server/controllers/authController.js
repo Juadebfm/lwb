@@ -169,7 +169,9 @@ exports.updateRole = async (req, res) => {
     } else if (user.role === "instructor") {
       user.expertiseAreas = expertiseAreas; // Instructors can only update their own expertise areas
     } else {
-      return res.status(403).json({ message: "Forbidden" });
+      return res
+        .status(403)
+        .json({ message: "You're not authorized to make this changes" });
     }
 
     // Save the updated user

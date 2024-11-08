@@ -15,6 +15,7 @@ const Hero = ({
   imagePosition = "right", // 'right', 'left', or 'alongside'
   withBackground = true,
   descriptionWidth = "80%",
+  titleStyle = "",
   imageClassName = "",
   contentWidth = "50%", // New prop to control content width
 
@@ -32,7 +33,9 @@ const Hero = ({
     <div
       className={`px-8 py-20 lg:py-28 md:px-20 lg:px-28 space-y-6 w-[${contentWidth}]`}
     >
-      <h1 className="text-[35px] md:text-[49px] leading-tight font-semibold">
+      <h1
+        className={`text-[35px] md:text-[49px] leading-tight font-semibold ${titleStyle}`}
+      >
         {title}
       </h1>
       <p

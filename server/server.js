@@ -24,6 +24,7 @@ require("./config/passport");
 
 // Routes
 app.use("/api/auth", require("./routes/auth"));
+app.use("/api", require("./routes/conversationRoute"));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
