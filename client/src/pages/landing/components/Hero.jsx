@@ -22,7 +22,7 @@ const Hero = ({
   // Event handlers
   onButtonClick = (e) => {
     e.preventDefault();
-    console.log("Clicked");
+    window.location.href = "/coming-soon";
   },
 
   // Optional custom components

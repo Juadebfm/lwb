@@ -1,22 +1,36 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User, LogOutIcon } from "lucide-react";
 import Button from "./Button";
 import { formatDate } from "../../../utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { CiSearch } from "react-icons/ci";
+import { useAuth } from "../../../context/AuthContext";
+import RegisterModal from "../../../component/RegisterModal";
 
 const Navbar = () => {
-  const today = new Date();
-  const formattedDate = formatDate(today);
+  const { user, loading, logout } = useAuth();
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const isActiveLink = (path) => location.pathname === path;
 
+  const handleRegisterClick = () => {
+    setIsRegisterModalOpen(true);
+  };
+
+  const handleRegisterModalClose = () => {
+    setIsRegisterModalOpen(false);
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <header>
-      <div className="bg-lwb_black h-max text-gray-100 px-8 md:px-20 lg:px-28 hidden lg:flex items-center justify-between">
+      <div className="bg-lwb_black h-max text-gray-100 px-8 md:px-10 lg:px-16 hidden lg:flex items-center justify-between">
         <ul className="flex items-center justify-between gap-6 py-5 text-sm">
           <li>
             <Link
@@ -77,11 +91,11 @@ const Navbar = () => {
             >
               Become An Instructor
             </Link>
-          </li>
+          </li>{" "}
         </ul>
-        <div className="text-sm text-slate-400">{formattedDate}</div>
+        <div className="text-sm text-slate-400">{formatDate(new Date())}</div>
       </div>
-      <nav className="bg-white px-8 md:px-20 lg:px-28 py-4 md:py-8 lg:py-6 flex items-center justify-between border-y border-y-[#E9EAF0]">
+      <nav className="bg-white px-8 md:px-10 lg:px-16 py-4 md:py-8 lg:py-6 flex items-center justify-between border-y border-y-[#E9EAF0]">
         <Link to="/">
           <img
             src="/smalllogo.png"
@@ -103,17 +117,40 @@ const Navbar = () => {
               className="placeholder:pl-12 placeholder:text-sm placeholder:text-slate-400 w-full h-full border border-slate-300 active:border-none ring-0 focus:border-none"
             />
           </div>
-          <div className="hidden lg:flex space-x-6">
-            <Button className="bg-[#FFEEE8] w-[168px] h-[48px] text-lwb_orange">
-              Create Account
-            </Button>
-            <Button
-              className="bg-lwb_orange w-[168px] h-[48px] text-white text-shadow-lg shadow-black"
-              text="Sign In"
-            >
-              Sign In
-            </Button>
-          </div>
+          {user ? (
+            <div className="flex items-center justify-end space-x-4">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center text-white font-bold">
+                  {user.name.charAt(0).toUpperCase()}
+                </div>
+                <div>
+                  <p className="text-sm font-medium">{user.name}</p>
+                  <p className="text-xs text-slate-400">{user.email}</p>
+                </div>
+              </div>
+              <Button
+                className="bg-transparent w-auto h-[48px] text-lwb_black text-shadow-lg shadow-black"
+                onClick={logout}
+              >
+                <LogOutIcon />
+              </Button>
+            </div>
+          ) : (
+            <div className="hidden lg:flex space-x-6">
+              <button
+                onClick={handleRegisterClick}
+                className="bg-[#FFEEE8] w-[168px] h-[48px] text-lwb_orange"
+              >
+                Create Account
+              </button>
+              <Button
+                className="bg-lwb_orange w-[168px] h-[48px] text-white text-shadow-lg shadow-black"
+                text="Sign In"
+              >
+                Sign In
+              </Button>
+            </div>
+          )}
           <button
             className="lg:hidden bg-lwb_orange text-white p-2 rounded text-[48px]"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -192,11 +229,16 @@ const Navbar = () => {
                 >
                   Become An Instructor
                 </Link>
-              </li>
+              </li>{" "}
             </ul>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <RegisterModal
+        isOpen={isRegisterModalOpen}
+        onClose={handleRegisterModalClose}
+      />
     </header>
   );
 };

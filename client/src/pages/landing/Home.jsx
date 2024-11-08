@@ -20,7 +20,7 @@ const Home = () => {
         imagePosition="alongside"
         withBackground={false}
         descriptionWidth="90%"
-        onButtonClick={() => (window.location.href = "/apply")}
+        onButtonClick={() => (window.location.href = "/coming-soon")}
         imageClassName="h-full w-full"
         contentWidth="100%"
       />
