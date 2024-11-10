@@ -15,12 +15,12 @@ const Footer = () => {
 
   return (
     <footer className="min-h-[65vh] bg-lwb_black text-white ">
-      <div className="border-b border-[#363B4780] flex items-center justify-center">
-        <div className="px-8 py-20 lg:py-28 md:px-20 lg:px-28 w-[48%]">
-          <h2 className="capitalize text-[40px] leading-[52px] w-[95%]">
+      <div className="border-b border-[#363B4780] flex flex-col md:flex-wrap md:flex-row items-center justify-center">
+        <div className="px-8 py-20 lg:py-28 md:px-20 lg:px-28 w-full md:w-[48%]">
+          <h2 className="capitalize text-[40px] leading-[52px] w-full md:w-[95%]">
             Start learning with students around the world.
           </h2>
-          <div className="mt-8 flex items-center justify-start gap-8">
+          <div className="mt-8 flex flex-col md:flex-row items-center justify-start gap-8">
             <Button className="bg-lwb_orange hover:bg-lwb_orange/50 text-white hover:text-white flex items-center justify-between h-[48px] group  w-full lg:w-auto px-4 gap-4">
               <span>Join The Family</span>
               <ArrowRight className="group-hover:animate-pulse" />
@@ -32,20 +32,20 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 items-center justify-center w-[52%]">
-          <div className="flex flex-col items-start justify-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-center w-full md:w-[52%] px-8 md:px-20 lg:px-28 pb-20">
+          <div className="flex flex-col items-center md:items-start justify-start mb-8 md:mb-0">
             <span className="text-[40px] font-semibold">
               <CountUp start={0} end={6.3} duration={2.75} />K
             </span>
             <span className="text-[#B7BAC7]">Online Courses</span>
           </div>
-          <div className="flex flex-col items-start justify-start">
+          <div className="flex flex-col items-center md:items-start justify-start mb-8 md:mb-0">
             <span className="text-[40px] font-semibold">
               <CountUp start={0} end={26} duration={2.75} />K
             </span>
             <span className="text-[#B7BAC7]">Certified Instructor</span>
           </div>
-          <div className="flex flex-col items-start justify-start">
+          <div className="flex flex-col items-center md:items-start justify-start mb-8 md:mb-0">
             <span className="text-[40px] font-semibold">
               <CountUp start={0} end={99} duration={2.75} />%
             </span>
@@ -54,7 +54,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 py-8 lg:py-14 px-8 md:px-20 lg:px-28 gap-20 items-start justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-8 lg:py-14 px-8 md:px-20 lg:px-28 gap-20 items-start justify-center">
         {/* Brand */}
         <div>
           <img src="/learning.png" alt="" className="h-[48px]" />
@@ -71,7 +71,7 @@ const Footer = () => {
         </div>
 
         {/* Quick Links */}
-        <ul className="space-y-5 pl-14 text-[#8C94A3]">
+        <ul className="space-y-5 pl-0 md:pl-14 text-[#8C94A3]">
           <span className="text-white uppercase font-sans tracking-widest">
             Quick Links
           </span>
@@ -125,7 +125,7 @@ const Footer = () => {
           </li>
         </ul>
         {/* Support */}
-        <ul className="space-y-5 pl-14 text-[#8C94A3]">
+        <ul className="space-y-5 pl-0 md:pl-14 text-[#8C94A3]">
           <span className="text-white uppercase font-sans tracking-widest">
             support
           </span>

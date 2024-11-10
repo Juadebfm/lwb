@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, User, LogOutIcon } from "lucide-react";
 import Button from "./Button";
@@ -7,12 +7,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CiSearch } from "react-icons/ci";
 import { useAuth } from "../../../context/AuthContext";
 import RegisterModal from "../../../component/RegisterModal";
+import { SkeletonNavbar } from "./SkeletonNavbar";
 
 const Navbar = () => {
   const { user, loading, logout } = useAuth();
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 0);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const isActiveLink = (path) => location.pathname === path;
 
@@ -24,12 +32,24 @@ const Navbar = () => {
     setIsRegisterModalOpen(false);
   };
 
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="px-8 md:px-20 lg:px-28">
+        <SkeletonNavbar />
+      </div>
+    );
   }
 
   return (
-    <header>
+    <header
+      className={`fixed top-0 left-0 w-full z-50 ${
+        scrolled ? "shadow-lg" : ""
+      } bg-white/30 backdrop-blur-md`}
+    >
       <div className="bg-lwb_black h-max text-gray-100 px-8 md:px-10 lg:px-16 hidden lg:flex items-center justify-between">
         <ul className="flex items-center justify-between gap-6 py-5 text-sm">
           <li>
@@ -95,7 +115,7 @@ const Navbar = () => {
         </ul>
         <div className="text-sm text-slate-400">{formatDate(new Date())}</div>
       </div>
-      <nav className="bg-white px-8 md:px-10 lg:px-16 py-4 md:py-8 lg:py-6 flex items-center justify-between border-y border-y-[#E9EAF0]">
+      <nav className="bg-white/70 backdrop-blur-lg px-8 md:px-10 lg:px-16 py-4 md:py-8 lg:py-6 flex items-center justify-between border-y border-y-[#E9EAF0]">
         <Link to="/">
           <img
             src="/smalllogo.png"
@@ -173,6 +193,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/"
+                  onClick={handleLinkClick}
                   className={`${
                     isActiveLink("/")
                       ? "text-lwb_orange font-semibold"
@@ -185,6 +206,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/courses"
+                  onClick={handleLinkClick}
                   className={`${
                     isActiveLink("/courses")
                       ? "text-lwb_orange font-semibold"
@@ -197,6 +219,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/about"
+                  onClick={handleLinkClick}
                   className={`${
                     isActiveLink("/about")
                       ? "text-lwb_orange font-semibold"
@@ -209,6 +232,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/contact"
+                  onClick={handleLinkClick}
                   className={`${
                     isActiveLink("/contact")
                       ? "text-lwb_orange font-semibold"
@@ -221,6 +245,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/instructor"
+                  onClick={handleLinkClick}
                   className={`${
                     isActiveLink("/instructor")
                       ? "text-lwb_orange font-semibold"

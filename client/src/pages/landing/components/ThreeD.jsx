@@ -13,7 +13,7 @@ export default function ThreeDCardDemo({ topic, subTopic, para, btn }) {
   return (
     <MouseEnterProvider>
       <CardContainer className="inter-var">
-        <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-[400px] rounded-xl p-10 border cursor-pointer">
+        <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-max lg:h-[400px] rounded-xl p-10 border cursor-pointer">
           <CardItem
             translateZ="50"
             className="text-3xl font-bold text-lwb_black dark:text-white"

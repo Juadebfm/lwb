@@ -1,7 +1,8 @@
 import plugin from "tailwindcss/plugin";
+const withMT = require("@material-tailwind/react/utils/withMT");
 
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = withMT({
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
@@ -40,7 +41,7 @@ export default {
     }),
     [addVariablesForColors],
   ],
-};
+});
 
 function addVariablesForColors({ addBase, theme }) {
   let allColors = flattenColorPalette(theme("colors"));

@@ -29,7 +29,7 @@ const Instructor = () => {
             Your teaching & earning steps
           </h2>
 
-          <div className="mt-8 grid grid-cols-2 items-center justify-center gap-8">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-8">
             <div className="flex items-center justify-start gap-2">
               <div className="bg-[#EBEBFF] text-[18px] text-[#564FFD] font-semibold p-2 rounded-full h-[40px] w-[40px] flex items-center justify-center">
                 1

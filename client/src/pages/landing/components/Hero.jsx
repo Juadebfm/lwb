@@ -14,10 +14,11 @@ const Hero = ({
   className = "",
   imagePosition = "right", // 'right', 'left', or 'alongside'
   withBackground = true,
-  descriptionWidth = "80%",
+  descriptionWidth = "100%", // Width adjusted for responsiveness
   titleStyle = "",
   imageClassName = "",
-  contentWidth = "50%", // New prop to control content width
+  img = "",
+  contentWidth = "100%", // Adjusts to screen size
 
   // Event handlers
   onButtonClick = (e) => {
@@ -31,16 +32,19 @@ const Hero = ({
 }) => {
   const contentSection = (
     <div
-      className={`px-8 py-20 lg:py-28 md:px-20 lg:px-28 space-y-6 w-[${contentWidth}]`}
+      className={`px-8 py-10 md:py-16 lg:py-28 md:px-12 lg:px-20 space-y-6 h-full w-full ${contentWidth} ${
+        imagePosition === "alongside" ? "md:w-[60%]" : "w-full lg:w-[50%]"
+      }`}
     >
       <h1
-        className={`text-[35px] md:text-[49px] leading-tight font-semibold ${titleStyle}`}
+        className={`text-[40px] md:text-5xl font-semibold ${titleStyle}`}
+        style={{ lineHeight: 1.3 }}
       >
         {title}
       </h1>
       <p
-        className="text-[#4E5566] text-[18px] leading-relaxed"
-        style={{ width: descriptionWidth }}
+        className="text-[#4E5566] text-base md:text-lg lg:text-xl leading-relaxed"
+        style={{ width: descriptionWidth, lineHeight: 1.7 }}
       >
         {description}
       </p>
@@ -48,7 +52,7 @@ const Hero = ({
         CustomButton
       ) : (
         <Button
-          className="bg-lwb_orange px-4 hover:bg-lwb_black text-white hover:text-white flex items-center justify-between h-[48px] group w-full lg:w-[196px]"
+          className="bg-lwb_orange px-4 hover:bg-lwb_black text-white flex items-center justify-between h-[48px] group w-full md:w-[50%] lg:w-[196px]"
           onClick={onButtonClick}
         >
           <span>{buttonText}</span>
@@ -60,14 +64,14 @@ const Hero = ({
 
   const imageSection = (
     <div
-      className={`h-full w-[${
-        100 - parseInt(contentWidth)
-      }%] ${imageClassName}`}
+      className={`h-full w-full ${
+        imagePosition === "alongside" ? "md:w-[40%]" : "w-full lg:w-[50%]"
+      } ${imageClassName}`}
     >
       <img
         src={imageSrc}
         alt={imageAlt}
-        className="w-auto h-auto object-cover"
+        className={`w-full h-full object-cover ${img}`}
       />
     </div>
   );
@@ -75,21 +79,21 @@ const Hero = ({
   let heroContent;
   if (imagePosition === "left") {
     heroContent = (
-      <div className="flex items-center justify-center w-full">
+      <div className="flex flex-col-reverse lg:flex-row items-center w-full">
         {imageSection}
         {contentSection}
       </div>
     );
   } else if (imagePosition === "right") {
     heroContent = (
-      <div className="flex items-center justify-center w-full">
+      <div className="flex flex-col lg:flex-row items-center w-full">
         {contentSection}
         {imageSection}
       </div>
     );
   } else {
     heroContent = (
-      <div className="flex items-center justify-center w-full">
+      <div className="flex flex-col lg:flex-row items-center w-full">
         {contentSection}
         {imageSection}
       </div>

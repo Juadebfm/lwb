@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const conversationSchema = new mongoose.Schema({
+const supportThreadSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -28,6 +28,21 @@ const conversationSchema = new mongoose.Schema({
       },
     },
   ],
+  category: {
+    type: String,
+    enum: ["general", "technical", "billing", "feature"],
+    default: "general",
+  },
+  priority: {
+    type: String,
+    enum: ["low", "medium", "high"],
+    default: "low",
+  },
+  status: {
+    type: String,
+    enum: ["open", "closed"],
+    default: "open",
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -36,11 +51,6 @@ const conversationSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  status: {
-    type: String,
-    enum: ["open", "closed"],
-    default: "open",
-  },
 });
 
-module.exports = mongoose.model("Conversation", conversationSchema);
+const SupportThread = mongoose.model("SupportThread", supportThreadSchema);

@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const { check } = require("express-validator");
-const authController = require("../controllers/authController");
+const auth = require("../controllers/authController"); // Changed this line
 const authMiddleware = require("../middleware/auth");
 
 // Validation middleware
@@ -22,10 +22,10 @@ const loginValidation = [
 ];
 
 // Routes
-router.post("/register", registerValidation, authController.register);
-router.post("/login", loginValidation, authController.login);
-router.put("/profile", authMiddleware, authController.updateProfile);
-router.put("/role", authMiddleware, authController.updateRole);
+router.post("/register", registerValidation, auth.register); // Changed to auth.register
+router.post("/login", loginValidation, auth.login); // Changed to auth.login
+router.put("/profile", authMiddleware, auth.updateProfile); // Changed to auth.updateProfile
+router.put("/role", authMiddleware, auth.updateRole); // Changed to auth.updateRole
 
 // Google OAuth routes
 router.get(
@@ -36,14 +36,14 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", { session: false }),
-  authController.googleAuthCallback
+  auth.googleAuthCallback // Changed to auth.googleAuthCallback
 );
 
 // Protected route example
 router.get(
   "/me",
   passport.authenticate("jwt", { session: false }),
-  authController.getMe
+  auth.getMe // Changed to auth.getMe
 );
 
 module.exports = router;

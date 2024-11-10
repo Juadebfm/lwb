@@ -7,12 +7,15 @@ import Contact from "./pages/landing/Contact";
 import Instructor from "./pages/landing/Instructor";
 import { AuthProvider } from "./context/AuthContext";
 import ComingSoon from "./pages/landing/ComingSoon";
+import Navbar from "./pages/landing/components/Navbar";
+import Footer from "./pages/landing/components/Footer";
 
 const App = () => {
   return (
     <div className="overflow-x-hidden">
       <AuthProvider>
         <BrowserRouter>
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Course />} />
@@ -21,6 +24,7 @@ const App = () => {
             <Route path="/instructor" element={<Instructor />} />
             <Route path="/coming-soon" element={<ComingSoon />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </AuthProvider>
     </div>
