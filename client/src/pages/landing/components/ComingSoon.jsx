@@ -66,17 +66,17 @@ const ComingSoon = () => {
     return () => clearInterval(countdownInterval);
   }, []);
   return (
-    <main className="h-full md:h-max grid grid-cols-1 md:grid-cols-2 px-8 md:px-20 lg:px-28 pt-[4rem]">
+    <main className="h-full md:h-max grid grid-cols-1 lg:grid-cols-2 px-8 md:px-20 lg:px-28 pt-[4rem]">
       <section className="flex flex-col items-start justify-center">
         <div>
           <span className="uppercase tracking-widest text-lwb_orange font-semibold">
             COMING SOON
           </span>
-          <h2 className="text-[35px] md:text-[49px] font-semibold leading-[48px] mt-6 w-full md:w-[70%] mb-10 capitalize">
+          <h2 className="text-[35px] md:text-[49px] font-semibold leading-[48px] mt-6 w-full lg:w-[70%] mb-10 capitalize">
             We launch fully very soon. Stay tune, Stay Close !!!
           </h2>
         </div>
-        <div className="flex items-center justify-center gap-5 w-full md:w-auto">
+        <div className="flex items-center justify-center gap-5 w-full lg:w-auto">
           <div className="w-max md:w-[108px] h-auto md:h-[100px] flex flex-col items-center justify-center gap-1 shadow-lg bg-[#F5F7FA] text-lwb_black px-6 md:px-0 py-4 md:py-4">
             <span className="text-[19px] md:text-[30px] font-semibold">
               {timeLeft.days}

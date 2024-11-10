@@ -1,6 +1,4 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import { Link } from "react-router-dom";
 import Hero from "./components/Hero";
 import BecomeInstructor from "./components/BecomeInstructor";
@@ -8,7 +6,7 @@ import BecomeInstructor from "./components/BecomeInstructor";
 const Instructor = () => {
   return (
     <div>
-      <Navbar />
+      <div className="h-[5rem] md:h-[10rem]"></div>
       <main className="min-h-screen">
         <div className="bg-[#F5F7FA] h-[150px] flex flex-col items-center justify-center">
           <h2 className="text-center font-semibold capitalize text-[24px]">
@@ -43,7 +41,6 @@ const Instructor = () => {
         </div>
         <BecomeInstructor />
       </main>
-      <Footer />
     </div>
   );
 };

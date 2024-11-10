@@ -6,11 +6,12 @@ import { formatDate } from "../../../utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { CiSearch } from "react-icons/ci";
 import { useAuth } from "../../../context/AuthContext";
-import RegisterModal from "../../../component/RegisterModal";
+import { RegisterModal, SignInModal } from "../../../component/FormModal";
 import { SkeletonNavbar } from "./SkeletonNavbar";
 
 const Navbar = () => {
   const { user, loading, logout } = useAuth();
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -26,10 +27,27 @@ const Navbar = () => {
 
   const handleRegisterClick = () => {
     setIsRegisterModalOpen(true);
+    setIsSignInModalOpen(false);
   };
 
-  const handleRegisterModalClose = () => {
+  const handleSignInClick = () => {
+    setIsSignInModalOpen(true);
     setIsRegisterModalOpen(false);
+  };
+
+  const handleModalClose = () => {
+    setIsRegisterModalOpen(false);
+    setIsSignInModalOpen(false);
+  };
+
+  const switchToRegister = () => {
+    setIsSignInModalOpen(false);
+    setIsRegisterModalOpen(true);
+  };
+
+  const switchToSignIn = () => {
+    setIsRegisterModalOpen(false);
+    setIsSignInModalOpen(true);
   };
 
   const handleLinkClick = () => {
@@ -165,7 +183,7 @@ const Navbar = () => {
               </button>
               <Button
                 className="bg-lwb_orange w-[168px] h-[48px] text-white text-shadow-lg shadow-black"
-                text="Sign In"
+                onClick={handleSignInClick}
               >
                 Sign In
               </Button>
@@ -260,9 +278,16 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
+      <SignInModal
+        isOpen={isSignInModalOpen}
+        onClose={handleModalClose}
+        onSwitchToRegister={switchToRegister}
+      />
+
       <RegisterModal
         isOpen={isRegisterModalOpen}
-        onClose={handleRegisterModalClose}
+        onClose={handleModalClose}
+        onSwitchToSignIn={switchToSignIn}
       />
     </header>
   );

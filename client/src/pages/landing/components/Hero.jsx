@@ -33,18 +33,18 @@ const Hero = ({
   const contentSection = (
     <div
       className={`px-8 py-10 md:py-16 lg:py-28 md:px-12 lg:px-20 space-y-6 h-full w-full ${contentWidth} ${
-        imagePosition === "alongside" ? "md:w-[60%]" : "w-full lg:w-[50%]"
+        imagePosition === "alongside" ? "md:w-full" : "w-full lg:w-[50%]"
       }`}
     >
       <h1
-        className={`text-[40px] md:text-5xl font-semibold ${titleStyle}`}
+        className={`text-[40px] md:text-5xl font-semibold w-full sm:w-auto md:w-full md:text-center lg:text-start lg:w-[70%] ${titleStyle}`}
         style={{ lineHeight: 1.3 }}
       >
         {title}
       </h1>
       <p
-        className="text-[#4E5566] text-base md:text-lg lg:text-xl leading-relaxed"
-        style={{ width: descriptionWidth, lineHeight: 1.7 }}
+        className="text-[#4E5566] text-base md:text-lg lg:text-xl leading-relaxed w-full lg:w-[80%] sm:w-auto md:text-center lg:text-start"
+        style={{ lineHeight: 1.7 }}
       >
         {description}
       </p>
@@ -65,7 +65,7 @@ const Hero = ({
   const imageSection = (
     <div
       className={`h-full w-full ${
-        imagePosition === "alongside" ? "md:w-[40%]" : "w-full lg:w-[50%]"
+        imagePosition === "alongside" ? "md:w-full" : "w-full lg:w-[50%]"
       } ${imageClassName}`}
     >
       <img

@@ -9,6 +9,8 @@ import { CiFacebook, CiInstagram, CiTwitter } from "react-icons/ci";
 const About = () => {
   return (
     <div className="min-h-screen">
+      <div className="h-[5rem] md:h-[10rem]"></div>
+
       <div className="bg-[#F5F7FA] h-[150px] flex flex-col items-center justify-center">
         <h2 className="text-center font-semibold capitalize text-[24px]">
           About
@@ -28,14 +30,14 @@ const About = () => {
       <div className="h-max">
         <Hero
           title="We share knowledge with the world"
-          titleStyle="w-[90%] capitalize"
+          titleStyle="capitalize"
           description="Connecting you with the finest online courses tailored to your needs. Learn from industry experts. Discover the best courses and elevate your skills today!"
           buttonText="Get Started"
           imageSrc="/mentor.jpg"
           imageAlt="Web Development"
           imagePosition="alongside"
           withBackground={false}
-          descriptionWidth="90%"
+          descriptionWidth="70%"
           onButtonClick={() => (window.location.href = "/coming-soon")}
           imageClassName="h-full w-full"
           img="w-full h-[100%]"

@@ -72,7 +72,7 @@ export default function ComingSoon() {
 
   return (
     <>
-      <main className="h-full md:h-max grid grid-cols-1 md:grid-cols-2 px-8 md:px-20 lg:px-28 pt-[4rem]">
+      <main className="h-full md:h-max grid grid-cols-1 lg:grid-cols-2 px-8 md:px-20 lg:px-28 pt-[4rem]">
         <section className="flex flex-col items-start justify-center">
           <div>
             <span className="uppercase tracking-widest text-lwb_orange font-semibold">
