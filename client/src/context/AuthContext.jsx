@@ -11,13 +11,16 @@ export const AuthProvider = ({ children }) => {
   // Function to handle user registration
   const register = async (email, name, password) => {
     try {
-      const response = await fetch("http://localhost:3000/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, name, password }),
-      });
+      const response = await fetch(
+        "https://lwb-omega.vercel.app/api/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, name, password }),
+        }
+      );
 
       if (!response.ok) {
         const error = await response.json();
@@ -36,13 +39,16 @@ export const AuthProvider = ({ children }) => {
   // Function to handle user login
   const login = async (email, password) => {
     try {
-      const response = await fetch("http://localhost:3000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://lwb-omega.vercel.app/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       if (!response.ok) {
         const error = await response.json();
@@ -74,11 +80,14 @@ export const AuthProvider = ({ children }) => {
       const token = localStorage.getItem("token");
       if (token) {
         try {
-          const response = await fetch("http://localhost:3000/api/auth/me", {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
+          const response = await fetch(
+            "https://lwb-omega.vercel.app/api/auth/me",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
 
           if (!response.ok) {
             const error = await response.json();
