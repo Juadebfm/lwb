@@ -11,7 +11,7 @@ const ComingSoon = () => {
   const fetchCountdown = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/launch/countdown"
+        "https://lwb-omega.vercel.app/api/launch/countdown"
       );
       if (!response.ok) {
         throw new Error("Failed to fetch countdown");
